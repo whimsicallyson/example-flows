@@ -33,5 +33,5 @@ flow.set_reference_tasks([ok])
 flow.storage = GitHub(
     repo="whimsicallyson/example-flows",
     path="flows/random-flow.py",
-    secrets=["GITHUB_ACCESS_TOKEN"]
+    secrets=["ALLYSON_GITHUB_ACCESS_TOKEN"]
 )
