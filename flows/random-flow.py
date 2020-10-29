@@ -1,4 +1,5 @@
 from prefect import task, Flow
+from prefect.environments.storage import GitHub
 from prefect.triggers import some_successful
 import random
 
@@ -29,4 +30,8 @@ with Flow("random list") as flow:
     
 flow.set_reference_tasks([ok])
 
-flow.register(project_name="first-flow-test")
+flow.storage = GitHub(
+    repo="whimsicallyson/example-flows",
+    path="flows/random-flow.py",
+    secrets=["GITHUB_ACCESS_TOKEN"]
+)
