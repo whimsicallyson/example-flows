@@ -3,17 +3,18 @@ from prefect.environments.storage import GitHub
 import time
 
 @task
-def sleep(time):
-    time.sleep(time)
+def sleep(x):
+    time.sleep(x)
 
 @task
-def hello(name):
+def hello(y):
     print("hello there ", y)
 
 with Flow(name="parameters flow") as flow:
     x = Parameter("time", default = 5)
     y = Parameter("name", default = "allyson")
-    sleep(time=time)
+    sleep(x=x)
+    hello(y=y)
 
 flow.storage = GitHub(
     repo="whimsicallyson/example-flows",
